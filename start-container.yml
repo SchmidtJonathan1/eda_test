@@ -1,0 +1,12 @@
+- name: Run docker container
+  hosts: localhost
+  tasks:
+    - name: Re-create a nginx container
+      community.docker.docker_container:
+        name: my-nginx
+        image: nginx
+        state: started
+        ports:
+          - 8080:80
+        detach: true
+        auto_remove: true
